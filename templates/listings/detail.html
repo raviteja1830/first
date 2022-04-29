@@ -1,0 +1,23 @@
+{% extends "listings/base.html" %}
+
+{% block content %}
+
+<div class="main">
+	<h2 class="font-weight-bold mt-4">LISTING:</h2>
+	<p></p>
+	<b>Title:</b>{{detail.title}}<br></p>
+	<p><b>Condition:</b>{{detail.condition}}<br></p>
+	<p><b>Product type:</b>{{detail.product_type}}<br></p>
+	<p><b>Sale Type:</b>{{detail.sale_type}}<br></p>
+	<p><b>Price:</b>${{detail.price|floatformat:2}}<br></p>
+	<p><b>Location:</b>{{detail.city}},{{detail.state}}<br></p>
+	<p><b>Post Date:</b>{{detail.list_date}}<br></p>
+	<b>Photos:</b>
+	<p></p><img class="card" src="{{detail.main_photo.url}}" width=400px height=400px>
+	<p></p>
+	<img class="card" src="{{detail.photo_1.url}}" width=400px height=400px>
+	<p></p>
+	<img class="card" src="{{detail.photo_2.url}}" width=400px height=400px>
+</div>	
+
+{% endblock content %}

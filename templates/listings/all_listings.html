@@ -1,0 +1,33 @@
+{% extends "listings/base.html" %}
+
+{% block content %}
+<h1>LISTINGS</h1>
+<div class = "col">
+	<div class = "card text-center text-blank mb-3">
+	<div class = "card-header">
+		<form method="get">
+			<p>Search Bar:</b>{{my_Filter.form.title}},{{my_Filter.form.condition}}</p>
+			<button class="btn" type="submit">Search</button>
+		</form>
+		{% for listings in all_listings %}
+		<img class="card-img-right img-thumbnail" src="{{listings.main_photo.url}}" width=250px height=300px alt="connect" style="max-height:200px">
+		<img class="card-img-right img-thumbnail" src="{{listings.photo_1.url}}" width=250px height=300px alt="connect" style="max-height:200px">
+		<p></p>
+		<p><b>Title:</b>{{listings.title}}<br></p>
+		<p>Condition:</b>{{listings.condition}}<br></p>
+		<p>Sale Type:</b>{{listings.sale_type}}<br></p>
+		<p><b>Price:</b>${{listings.price|floatformat:2}}<br></p>
+		<p>Location:</b>{{listings.city}},{{listings.state}}<br></p>
+		<p><b>Post Date:</b>{{listings.list_date}}<br></p>
+		<ul>
+			<a class = "btn" href = "{% url 'listings:detail' listings.id %}">View Listing</a>
+		</ul>	
+	</div>
+	<hr/>
+	{% empty %}
+	<h3>No Listings found. Try again.</h3>
+	{% endfor %}
+	</div>
+</div>
+
+{% endblock content %}
